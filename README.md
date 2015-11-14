@@ -7,6 +7,8 @@
 ```
 mkdir -p /srv/tor/etc/tor
 mkdir -p /srv/tor/var/lib/tor
+useradd -u 9001 -g 9001 tor
+chown -R tor:tor /srv/tor/var/lib/tor
 echo 'ORPort 80' >> /srv/tor/etc/tor/torrc
 echo 'ExitPolicy reject *:*' >> /srv/tor/etc/tor/torrc
 ```

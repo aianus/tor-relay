@@ -9,6 +9,11 @@ RUN echo 'deb http://deb.torproject.org/torproject.org jessie main' >> /etc/apt/
 RUN apt-get update
 RUN apt-get install -y tor
 
+RUN usermod -u 9001 debian-tor
+RUN groupmod -g 9001 debian-tor
+RUN chown -R debian-tor:debian-tor /var/lib/tor
+USER debian-tor
+
 VOLUME /var/lib/tor
 VOLUME /etc/tor
 
